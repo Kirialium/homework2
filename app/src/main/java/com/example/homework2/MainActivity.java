@@ -1,21 +1,29 @@
 package com.example.homework2;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Build;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
     private EditText typeSum;
     private Button btnOk;
+    private TextView upText;
+
     private int money;
+    private final int telescopeCost = 14000;
+    private final float bet = 1.05f;
+    private final float scholarship = 2500 * bet;
+    private float time = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +34,19 @@ public class MainActivity extends AppCompatActivity {
         fillVariables();
         setSystemBarsColor();
 
-        final int telescopeCost = 14000;
+
+
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                money = Integer.parseInt(typeSum.getText().toString());
+                if(TextUtils.isEmpty(typeSum.getText().toString())) {
+                    Toast.makeText(getApplicationContext(), "Введите сумму", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    money = Integer.parseInt(typeSum.getText().toString());
+                    calculateTime();
+                    variantsToBuy();
+                }
             }
         });
     }
@@ -39,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
     private void fillVariables(){
         typeSum = findViewById(R.id.type_sum);
         btnOk = findViewById(R.id.btn_ok);
+        upText = findViewById(R.id.up_text);
     }
 
 
@@ -50,5 +67,19 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setNavigationBarColor(getResources().getColor(R.color.dark_black));
     }
 
+    private void calculateTime(){
+        time = (telescopeCost - money) / scholarship;
+    }
 
+    @SuppressLint("SetTextI18n")
+    private void variantsToBuy(){
+        if(money >= telescopeCost){
+            upText.setText("Купиете хоть сейчас");
+        }
+        else {
+            @SuppressLint("DefaultLocale")
+            String timeString = String.format("%.01f",time);
+            upText.setText("Вы купите через " + timeString +" месяцев");
+        }
+    }
 }

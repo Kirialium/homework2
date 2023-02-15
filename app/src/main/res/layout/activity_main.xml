@@ -17,9 +17,9 @@
         android:backgroundTint="@color/white"
         android:fontFamily="@font/coolvetica"
         android:hint="Ваша сумма"
+        android:inputType="number"
         android:textColorHint="@color/dark_white"
         android:textSize="20sp"
-        android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
@@ -37,5 +37,21 @@
         app:layout_constraintHorizontal_bias="0.539"
         app:layout_constraintStart_toEndOf="@+id/type_sum"
         app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/up_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/coolvetica"
+        android:gravity="center"
+        android:text="changeIt"
+        android:textColor="@color/white"
+        android:textSize="35sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/type_sum"
         tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>
