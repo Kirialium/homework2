@@ -34,8 +34,6 @@ public class MainActivity extends AppCompatActivity {
         fillVariables();
         setSystemBarsColor();
 
-
-
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
                     money = Integer.parseInt(typeSum.getText().toString());
                     calculateTime();
                     variantsToBuy();
+                    upText.setAlpha(1);
                 }
             }
         });

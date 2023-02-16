@@ -47,6 +47,7 @@
         android:fontFamily="@font/coolvetica"
         android:gravity="center"
         android:text="changeIt"
+        android:alpha="0"
         android:textColor="@color/white"
         android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
